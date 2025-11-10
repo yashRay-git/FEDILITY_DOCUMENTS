@@ -1,0 +1,932 @@
+{
+	"info": {
+		"_postman_id": "79391613-00c1-40f9-ab6a-25c36a4df096",
+		"name": "SIT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37828809"
+	},
+	"item": [
+		{
+			"name": "Moudule_A",
+			"item": [
+				{
+					"name": "EnrollBiller-Individual",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"operation\": \"enrollment_indiv\",\r\n  \"billerId\": \"0618536600CC\",\r\n  \"accountNumber\": \"1400161298613\",\r\n  \"requestSource\": \"IB\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/rtponboarding_indiv"
+					},
+					"response": [
+						{
+							"name": "SuccessResponse",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"operation\": \"enrollment_indiv\",\r\n  \"billerId\": \"0618536325\",\r\n  \"accountNumber\": \"1400161298613\",\r\n  \"requestSource\": \"IB\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://10.180.142.218:7000/enrollbillerapi/v1/individual"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "IBM App Connect Enterprise"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Feb 2025 10:05:22 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": \"200\",\n    \"errorDescription\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "EnrollBiller-Bulk",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"enrollment_bulk\",\r\n    \"file\": {\r\n        \"data\": [\r\n            {\r\n                \"billerId\": \"1070031789514AA\",\r\n                \"accountNumber\": \"1055375558818\",\r\n                \"requestSource\": \"IB\"\r\n            },\r\n            {\r\n                \"billerId\": \"1300031973714BB\",\r\n                \"accountNumber\": \"1055375557327\",\r\n                \"requestSource\": \"IB\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/rtponboarding_bulk"
+					},
+					"response": []
+				},
+				{
+					"name": "Biller Details(CallBackToChannel)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"fetch_biller\",\r\n    \"billerId\": \"0618536607\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7080/billerdetails"
+					},
+					"response": []
+				},
+				{
+					"name": "QueryBiller-BillerId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"query\",\r\n    \"billerId\": \"0618536600\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7080/querybiller"
+					},
+					"response": []
+				},
+				{
+					"name": "ListBiller",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"list\",\r\n    \"institutionId\": \"300311\",\r\n    \"requestSource\": \"IB\",\r\n    \"requestTimestamp\": \"2019-06-15T15:26:07\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/listbiller"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateBiller",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"update\",\r\n    \"institutionId\": \"300311\",\r\n    \"billerId\": \"06185365202\",\r\n    \"name\": \"NAOMI ADUTWUMWAA KYEI\",\r\n    \"accountNumber\": \"1951385261246\",\r\n    \"branchCode\": \"240101\",\r\n    \"requestSource\": \"IB\",\r\n    \"callBackUrl\": \"http://10.180.142.218:7000/callbacktochannel/v1/channel\",\r\n    \"requestTimestamp\": \"2025-06-15T20:49:55\",\r\n    \"requestSignature\": \"NNkX0tePGViveWFX79n/+O43yz5lKQakk+eLKPmi7ANd+JKpkFIKR5iVO3CyFo/1qAioXLy9MIP+snGURA31kaa2tOy1AsUG0YQx3ltkxDrybmzPswZRYHI9hfwW0e4HNoApS9D1IYEZNGWcuMgNHyDs+Nb4bCZAwNShuY523W0=\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://10.180.142.218:7000/ghipssapi/rtp/updatebiller"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteBiller",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"delete\",\r\n    \"institutionId\": \"300311\",\r\n    \"billerId\": \"06185365202\",\r\n    \"requestSource\": \"IB\",\r\n    \"requestTimestamp\": \"2019-06-15T20:49:55 \",\r\n    \"requestSignature\": \"NNkX0tePGViveWFX79n/+O43yz5lKQakk+eLKPmi7ANd+JKpkFIKR5iVO3CyFo/1qAioXLy9MIP+snGURA31kaa2tOy1AsUG0YQx3ltkxDrybmzPswZRYHI9hfwW0e4HNoApS9D1IYEZNGWcuMgNHyDs+Nb4bCZAwNShuY523W0=\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://10.180.142.218:7000/ghipssapi/rtp/deleteBiller/"
+					},
+					"response": []
+				},
+				{
+					"name": "QueryBiller-AccountId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"queryAccount\",\r\n    \"accountNumber\": \"1951385261246\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/querybiller"
+					},
+					"response": []
+				},
+				{
+					"name": "QueryBillerOnline",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\":\"query_online\",\r\n    \"billerId\": \"0618536308ss\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://10.180.142.218:7803/query_online"
+					},
+					"response": [
+						{
+							"name": "QueryBillerOnline",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"operation\": \"query_online\",\r\n    \"billerId\": \"0618536600CC\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://10.180.142.218:7850/query_online"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "IBM App Connect Enterprise"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 11:23:23 GMT"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Content-Length",
+									"value": "260"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"institutionId\": \"300311\",\n    \"billerId\": \"0618536600CC\",\n    \"name\": \"NAOMI ADUTWUMWAA KYEI\",\n    \"accountNumber\": \"1400161298613\",\n    \"branchCode\": \"012\",\n    \"status\": \"Cancelled\",\n    \"callBackUrl\": \"https://192.168.236.227:1054/ghipssrtp\",\n    \"errorCode\": \"200\",\n    \"errorDescription\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "listOnline",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": "https://10.180.142.218:7850/list_online"
+					},
+					"response": [
+						{
+							"name": "listOnline",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"operation\": \"list_online\",\r\n    \"institutionId\": \"300323\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://10.180.142.218:7850/list_online"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "IBM App Connect Enterprise"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 11:23:11 GMT"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Content-Length",
+									"value": "863"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"billers\": [\n        {\n            \"institutionId\": \"300323\",\n            \"billerId\": \"065530855698\",\n            \"name\": \"ARCH FEEST\",\n            \"accountNumber\": \"1055375558818\",\n            \"branchCode\": \"021\",\n            \"callBackUrl\": \"https://192.168.236.227:1054/ghipssrtp\",\n            \"status\": \"Normal\"\n        },\n        {\n            \"institutionId\": \"300323\",\n            \"billerId\": \"065569876574398\",\n            \"name\": \"ARCH FEEST\",\n            \"accountNumber\": \"1055375558818\",\n            \"branchCode\": \"021\",\n            \"callBackUrl\": \"https://192.168.236.227:1054/ghipssrtp\",\n            \"status\": \"Normal\"\n        },\n        {\n            \"institutionId\": \"300323\",\n            \"billerId\": \"06589655398\",\n            \"name\": \"ARCH FEEST\",\n            \"accountNumber\": \"1055375558818\",\n            \"branchCode\": \"021\",\n            \"callBackUrl\": \"https://192.168.236.227:1054/ghipssrtp\",\n            \"status\": \"Normal\"\n        },\n        {\n            \"institutionId\": \"300323\",\n            \"billerId\": \"0658965569398\",\n            \"name\": \"ARCH FEEST\",\n            \"accountNumber\": \"1055375558818\",\n            \"branchCode\": \"021\",\n            \"callBackUrl\": \"https://192.168.236.227:1054/ghipssrtp\",\n            \"status\": \"Normal\"\n        }\n    ],\n    \"errorCode\": \"200\",\n    \"errorDescription\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "queryTransactionStatus",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"query_trnxstatus\",\r\n    \"billId\": \"477828828545\",\r\n    \"billerId\": \"6Y262Y26111\",\r\n    \"payerAccountNumber\": \"0123456789012\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/query_trnxStatus"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Module_B",
+			"item": [
+				{
+					"name": "BillerPayment_Individual",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"billerpayment\",\r\n    \"billerId\": \"06195865421RS\",\r\n    \"billId\": \"GH782882\",\r\n    \"billDate\": \"2025-03-19\",\r\n    \"billAmount\": \"123.45\",\r\n    \"payerInstitutionId\": \"300315\",\r\n    \"payerAccountNumber\": \"0246089019000\",\r\n    \"payerName\": \"John DOE\",\r\n    \"billDescription\": \"Some bill that needs payment\",\r\n    \"requestTimestamp\": \"2025-03-19T17:20:24.726+01:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/billerpayment_indiv"
+					},
+					"response": []
+				},
+				{
+					"name": "billerpayment_bulk",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transactions\": [\r\n        {\r\n            \"operation\": \"billerpayment\",\r\n            \"billerId\": \"06195865421RS\",\r\n            \"billId\": \"GH782882\",\r\n            \"billDate\": \"2025-03-19\",\r\n            \"billAmount\": \"123.45\",\r\n            \"payerInstitutionId\": \"300315\",\r\n            \"payerAccountNumber\": \"0246089019000\",\r\n            \"payerName\": \"John DOE\",\r\n            \"billDescription\": \"Some bill that needs payment\",\r\n            \"requestTimestamp\": \"2025-03-19T17:20:24.726+01:00\"\r\n        },\r\n        {\r\n            \"operation\": \"billerpayment\",\r\n            \"billerId\": \"06195865422RS\",\r\n            \"billId\": \"GH782882\",\r\n            \"billDate\": \"2025-03-19\",\r\n            \"billAmount\": \"123.45\",\r\n            \"payerInstitutionId\": \"300315\",\r\n            \"payerAccountNumber\": \"0246089019000\",\r\n            \"payerName\": \"John DOE\",\r\n            \"billDescription\": \"Some bill that needs payment\",\r\n            \"requestTimestamp\": \"2025-03-19T17:20:24.726+01:00\"\r\n        },\r\n        {\r\n            \"operation\": \"billerpayment\",\r\n            \"billerId\": \"06195865423RS\",\r\n            \"billId\": \"GH782882\",\r\n            \"billDate\": \"2025-03-19\",\r\n            \"billAmount\": \"123.45\",\r\n            \"payerInstitutionId\": \"300315\",\r\n            \"payerAccountNumber\": \"0246089019000\",\r\n            \"payerName\": \"John DOE\",\r\n            \"billDescription\": \"Some bill that needs payment\",\r\n            \"requestTimestamp\": \"2025-03-19T17:20:24.726+01:00\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/billerpayment_bulk"
+					},
+					"response": []
+				},
+				{
+					"name": "BillerNotificationAPI",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"billerId\": \"6Y262Y2611901\",\r\n    \"billId\": \"GH782887\",\r\n    \"billDate\": \"2019-05-31\",\r\n    \"billAmount\": 123.45,\r\n    \"billDescription\": \"Some bill that needs payment\",\r\n    \"payerName\": \"John DOE\",\r\n    \"payerInstitutionId\": \"300311\",\r\n    \"payerAccountNumber\": \"0123456789012\",\r\n    \"status\": \"OK\",\r\n    \"requestTimestamp\": \"2019-06-17T17:20:24.726+01:00\",\r\n    \"requestSignature\": \"NNkX0tePGViveWFX79n/+O43yz5lKQakk+eLKPmi7ANd+JKpkFIKR5iVO3CyFo/1qAioXLy9MIP+snGURA31kaa2tOy1AsUG0YQx3ltkxDrybmzPswZRYHI9hfwW0e4HNoApS9D1IYEZNGWcuMgNHyDs+Nb4bCZAwNShuY523W0=\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://10.180.142.218:7000/billernotificationapi/v1/billerNotification"
+					},
+					"response": []
+				},
+				{
+					"name": "payerpayment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"billerId\": \"9856469\",\r\n    \"billId\": \"GH78202\",\r\n    \"billDate\": \"2019-05-31\",\r\n    \"billAmount\": 123,\r\n    \"billDescription\": \"Some bill that needs payment\",\r\n    \"billerName\": \"JOHN MENSAH\",\r\n    \"billerInstitutionId\": \"300311\",\r\n    \"billerAccountNumber\": \"1020820171412\",\r\n    \"payerName\": \"John DOE\",\r\n    \"payerInstitutionId\": \"300311\",\r\n    \"payerAccountNumber\": \"1090000304600\",\r\n    \"requestTimestamp\": \"2019-06-17T17:20:24.726+01:00\",\r\n    \"requestSignature\": \"NNkX0tePGViveWFX79n/+O43yz5lKQakk+eLKPmi7ANd+JKpkFIKR5iVO3CyFo/1qAioXLy9MIP+snGURA31kaa2tOy1AsUG0YQx3ltkxDrybmzPswZRYHI9hfwW0e4HNoApS9D1IYEZNGWcuMgNHyDs+Nb4bCZAwNShuY523W0=\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/payerpaymentapi/v1/"
+					},
+					"response": [
+						{
+							"name": "Success_payerpayment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"billerId\": \"985689469\",\r\n    \"billId\": \"GH78202\",\r\n    \"billDate\": \"2019-05-31\",\r\n    \"billAmount\": 123,\r\n    \"billDescription\": \"Some bill that needs payment\",\r\n    \"billerName\": \"JOHN MENSAH\",\r\n    \"billerInstitutionId\": \"300311\",\r\n    \"billerAccountNumber\": \"1020820171412\",\r\n    \"payerName\": \"John DOE\",\r\n    \"payerInstitutionId\": \"300311\",\r\n    \"payerAccountNumber\": \"1090000304600\",\r\n    \"requestTimestamp\": \"2019-06-17T17:20:24.726+01:00\",\r\n    \"requestSignature\": \"NNkX0tePGViveWFX79n/+O43yz5lKQakk+eLKPmi7ANd+JKpkFIKR5iVO3CyFo/1qAioXLy9MIP+snGURA31kaa2tOy1AsUG0YQx3ltkxDrybmzPswZRYHI9hfwW0e4HNoApS9D1IYEZNGWcuMgNHyDs+Nb4bCZAwNShuY523W0=\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://10.180.142.218:7850/payerpaymentapi/v1/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "IBM App Connect Enterprise"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Jul 2025 13:34:16 GMT"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": 200,\n    \"errorDescription\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "ghipssrtp",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"institutionId\" : \"300310\",\r\n    \"billerId\" : \"89317872067GH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7080/ghipssrtp"
+					},
+					"response": []
+				},
+				{
+					"name": "rtpbiller",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"transactionStatus\",\r\n    \"billerId\": \"06195865421RS\",\r\n    \"billId\": \"GH782882\",\r\n    \"billDate\": \"2019-05-31\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7080/billerpaymentstatus"
+					},
+					"response": []
+				},
+				{
+					"name": "callbacktochannelapi",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"billId\":\"GH782882\",\r\n    \"billDate\":\"2019-05-31\",\r\n    \"billerId\":\"6Y262Y22036\",\r\n    \"status\":\"Success\",\r\n    \"message\":\"Transaction Successfull\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/callbacktochannelapi/"
+					},
+					"response": []
+				},
+				{
+					"name": "NameEquiryIndividual",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"nameenquiry\",\r\n    \"billerId\": \"JS785S4\",\r\n    \"payerAccountNumber\": \"0123456789012\",\r\n    \"payerInstitutionId\": \"300311\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/RTPNameEquiryIndividual"
+					},
+					"response": []
+				},
+				{
+					"name": "NameEquiryBulk",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transactions\": [\r\n        {\r\n            \"operation\": \"nameenquiry\",\r\n            \"billerId\": \"JS785S4\",\r\n            \"payerAccountNumber\": \"1055375558818\",\r\n            \"payerInstitutionId\": \"300312\"\r\n        },\r\n        {\r\n            \"operation\": \"nameenquiry\",\r\n            \"billerId\": \"JS785S5\",\r\n            \"payerAccountNumber\": \"0123776789012\",\r\n            \"payerInstitutionId\": \"300311\"\r\n        },\r\n        {\r\n            \"operation\": \"nameenquiry\",\r\n            \"billerId\": \"JS785S6\",\r\n            \"payerAccountNumber\": \"0123226789012\",\r\n            \"payerInstitutionId\": \"300311\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/RTPNameEquiryBulk"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Module_C",
+			"item": [
+				{
+					"name": "PAPSS-Internal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"fundstransfercredit\",\r\n    \"beneficiaryAccountName\": \"WILLIAM A COX ITF\",\r\n    \"beneficiaryAccountNumber\": \"004001000074010188\",\r\n    \"beneficiaryAddress\": \"LB, LIBERIA\",\r\n    \"destinationAmount\": 571.50,\r\n    \"destinationCountry\": \"LR\",\r\n    \"destinationCurrency\": \"LRD\",\r\n    \"destinationInstitutionBic\": \"IBLRLRLM\",\r\n    \"destinationInstitutionId\": \"LR1003\",\r\n    \"exchangeRate\": 5.715000000,\r\n    \"userId\": \"MISTRALUSER\",\r\n    \"channelRef\": \"MOB583894zhz8\",\r\n    \"narration\": \"testing of PAPSS\",\r\n    \"originatorAccountName\": \"John Doe\",\r\n    \"originatorAccountNumber\": \"1055321777616\",\r\n    \"originatorAmount\": 100.00,\r\n    \"transactionId\": \"20240910GH10002113319888\",\r\n    \"invoice\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/papss/internal"
+					},
+					"response": []
+				},
+				{
+					"name": "NEC",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderAccount\": \"1020820171412\",\r\n    \"senderInstitution\": \"300315\",\r\n    \"receiverAccount\": \"1400161298613\",\r\n    \"externalRef\": \"101900160255\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/gip_nec"
+					},
+					"response": []
+				},
+				{
+					"name": "NED",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n\"debitAccount\" : \"1055321777616\", \r\n\"debitAccountName\" : \"WILLIAM DOE\", \r\n\"senderInstitution\" : \"300315\", \r\n\"creditAccount\" : \"1020820171412\", \r\n\"channelCode\" : \"304\", \r\n\"otp\" : \"3459\", \r\n\"transactionAmount\" : \"000000000100\", \r\n\"narration\" : \"PAYMENT FOR SERVICE\", \r\n\"externalRef\" : \"101900066100\", \r\n\"trackingNum\" : \"125278\", \r\n\"transactionDate\" : \"230630191136\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/gip_ned"
+					},
+					"response": []
+				},
+				{
+					"name": "PAPSS-Partners",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"fundstransfercredit\",\r\n    \"beneficiaryAccountName\": \"WILLIAM A COX ITF\",\r\n    \"beneficiaryAccountNumber\": \"004001000074010188\",\r\n    \"beneficiaryAddress\": \"LB, LIBERIA\",\r\n    \"destinationAmount\": 571.50,\r\n    \"destinationCountry\": \"LR\",\r\n    \"destinationCurrency\": \"LRD\",\r\n    \"destinationInstitutionBic\": \"IBLRLRLM\",\r\n    \"destinationInstitutionId\": \"LR1003\",\r\n    \"exchangeRate\": 5.715000000,\r\n    \"userId\": \"MISTRALUSER\",\r\n    \"channelRef\": \"1102030405063\",\r\n    \"narration\": \"testing of PAPSS\",\r\n    \"originatorAccountName\": \"John Doe\",\r\n    \"originatorAccountNumber\": \"DRG11\",\r\n    \"prdCode\":  7514,\r\n    \"originatorAmount\": 100.00,\r\n    \"transactionId\": \"20245910GHI0100114319889\",\r\n    \"invoice\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/papps/partners"
+					},
+					"response": []
+				},
+				{
+					"name": "Reversal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderInstitution\": \"300315\",\r\n    \"transactionAmount\": \"000000000100\",\r\n    \"externalRef\": \"1019005667\",\r\n    \"trackingNum\": \"125278\",\r\n    \"reversalDate\": \"230630191905\",\r\n    \"transactionId\": \"701MS41212280168\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/gip_reversal"
+					},
+					"response": []
+				},
+				{
+					"name": "FundTransferCredit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderAccount\": \"1020820171412\",\r\n    \"Sendername\": \"JOHN MENSAH\",\r\n    \"senderInstitution\": \"300315\",\r\n    \"receiverAccount\": \"1090000304600\",\r\n    \"transactionAmount\": \"000000000100\",\r\n    \"narration\": \"PAYMENT FOR SERVICE\",\r\n    \"externalRef\": \"1132350\",\r\n    \"trackingNum\": \"125278\",\r\n    \"transactionDate\": \"230630191136\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/gip_ftc"
+					},
+					"response": []
+				},
+				{
+					"name": "FundTransferDebit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"debitAccount\": \"1055321777616\",\r\n    \"debitAccountName\": \"WILLIAM DOE\",\r\n    \"senderInstitution\": \"300315\",\r\n    \"creditAccount\": \"1020820171412\",\r\n    \"channelCode\": \"304\",\r\n    \"otp\": \"3459\",\r\n    \"transactionAmount\": \"000000000100\",\r\n    \"narration\": \"PAYMENT FOR SERVICE\",\r\n    \"externalRef\": \"1016631400\",\r\n    \"trackingNum\": \"125278\",\r\n    \"transactionDate\": \"230630191136\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/gip_ftd"
+					},
+					"response": []
+				},
+				{
+					"name": "QrCodeFundTransferCredit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderAccount\": \"1020820171412\",\r\n    \"Sendername\": \"JOHN MENSAH\",\r\n    \"senderInstitution\": \"300315\",\r\n    \"receiverAccount\": \"1090033199418\",\r\n    \"transactionAmount\": \"000000000100\",\r\n    \"narration\": \"PAYMENT FOR SERVICE\",\r\n    \"externalRef\": \"10196456\",\r\n    \"trackingNum\": \"125278\",\r\n    \"transactionDate\": \"230630191136\",\r\n    \"qrCode\": \"0101111010101010101000011010011001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/gip_qrc"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Module_D",
+			"item": [
+				{
+					"name": "FTCIndividualSingle_Internal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"fundstransfer_indiv\",\r\n    \"amount\": \"50\",\r\n    \"destBankCode\": \"300315\",\r\n    \"channelRef\": \"1156700568\",\r\n    \"userId\": \"GIPUSER\",\r\n    \"accountToDebit\": \"1055321777616\",\r\n    \"nameToDebit\": \"JOE ANOKYE\",\r\n    \"accountToCredit\": \"1020820171412\",\r\n    \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n    \"transactionDetail\": \"GIP PAYMENT FOR GOODS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/ftcsingle_internal"
+					},
+					"response": []
+				},
+				{
+					"name": "NEC_Single",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"nec_indiv\",\r\n    \"destBankCode\": \"300315\",\r\n    \"channelRef\": \"101146627911\",\r\n    \"accountToDebit\": \"1090033199513\",\r\n    \"nameToDebit\": \"AUGSUTINE  JESSON\",\r\n    \"accountToCredit\": \"102082017141\",\r\n    \"nameToCredit\": \"JOHN MENSAH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/giptransfer_single"
+					},
+					"response": []
+				},
+				{
+					"name": "giptransfer_bulk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"nec_bulk\",\r\n    \"file\": {\r\n        \"data\": [\r\n            {\r\n                \"destBankCode\": \"300315\",\r\n                \"channelRef\": \"101900166252\",\r\n                \"accountToDebit\": \"1090033199418\",\r\n                \"nameToDebit\": \"AUGSUTINE  JESSON\",\r\n                \"accountToCredit\": \"1020820171412\",\r\n                \"NameToCredit\": \"OLAM PURCHASE ACCOUNT\"\r\n            },\r\n            {\r\n                \"destBankCode\": \"300315\",\r\n                \"channelRef\": \"101900106252\",\r\n                \"accountToDebit\": \"1090099199418\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"1020820171489\",\r\n                \"NameToCredit\": \"OLAM PURCHASE ACCOUNT\"\r\n            },\r\n            {\r\n                \"destBankCode \": \"300359\",\r\n                \"channelRef\": \"101900866252\",\r\n                \"accountToDebit\": \"1090099199418\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"1020820171412\",\r\n                \"NameToCredit\": \"OLAM PURCHASE ACCOUNT\"\r\n            },\r\n            {\r\n                \"destBankCode\": \"300315\",\r\n                \"channelRef\": \"101908866252\",\r\n                \"accountToDebit\": \"1090099199418\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"1020820171412\",\r\n                \"NameToCredit\": \"OLAM PURCHASE ACCOUNT\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/giptransfer_bulk"
+					},
+					"response": []
+				},
+				{
+					"name": "NCE_Bulk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"nec_bulk\",\r\n    \"file\": {\r\n        \"data\": [\r\n            {\r\n                \"destBankCode\": \"300595\",\r\n                \"channelRef\": \"101906271\",\r\n                \"accountToDebit\": \"1090033199514\",\r\n                \"nameToDebit\": \"AUGSUTINE  JESSON\",\r\n                \"accountToCredit\": \"0500000925\",\r\n                \"nameToCredit\": \"JOHN MENSAH\"\r\n            },\r\n            {\r\n                \"destBankCode\": \"300315\",\r\n                \"channelRef\": \"101908500\",\r\n                \"accountToDebit\": \"1090099199419\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"1020820171412\",\r\n                \"NameToCredit\": \"OLAM PURCHASE ACCOUNT\"\r\n            },\r\n            {\r\n                \"destBankCode\": \"300592\",\r\n                \"channelRef\": \"101908505\",\r\n                \"accountToDebit\": \"1090099199419\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"0267327390\",\r\n                \"NameToCredit\": \"OLAM PURCHASE ACCOUNT\"\r\n            },\r\n            {\r\n                \"destBankCode\": \"300592\",\r\n                \"channelRef\": \"101908610\",\r\n                \"accountToDebit\": \"1090099199419\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"026732739\",\r\n                \"NameToCredit\": \"OLAM PURCHASE ACCOUNT\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/giptransfer_bulk"
+					},
+					"response": []
+				},
+				{
+					"name": "FTCIndividual_SinglePartners",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \"fundstransfer_indiv\",\r\n    \"amount\": \"50\",\r\n    \"destBankCode\": \"300315\",\r\n    \"channelRef\": \"1019771690465\",\r\n    \"userId\": \"GIPUSER\",\r\n    \"accountToDebit\": \"DRG11\",\r\n    \"nameToDebit\": \"JOE ANOKYE\",\r\n    \"accountToCredit\": \"1020820171412\",\r\n    \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n    \"transactionDetail\": \"GIP PAYMENT FOR GOODS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/ftcsingle_partners"
+					},
+					"response": []
+				},
+				{
+					"name": "FTCBulk_Partners",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \" fundstransfer_bulk\",\r\n    \"file\": {\r\n        \"data\": [\r\n            {\r\n                \"amount\": \"50\",\r\n                \"destBankCode\": \"300315\",\r\n                \"channelRef\": \"555557426998164\",\r\n                \"userId\": \"GIPUSER\",\r\n                \"accountToDebit\": \"RDFH\",\r\n                \"prdCode\": \"MS38\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"1420820171412\",\r\n                \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n                \"transactionDetail\": \"GIP PAYMENT FOR GOODS\"\r\n            },\r\n            {\r\n                \"amount\": \"10\",\r\n                \"destBankCode\": \"300315\",\r\n                \"channelRef\": \"554585846547594553\",\r\n                \"userId\": \"GIPUSER\",\r\n                \"accountToDebit\": \"RDFH\",\r\n                \"prdCode\": \"MS38\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"1020820171412\",\r\n                \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n                \"transactionDetail\": \"GIP PAYMENT FOR GOODS\"\r\n            },\r\n            {\r\n                \"amount\": \"30\",\r\n                \"destBankCode\": \"300315\",\r\n                \"channelRef\": \"19675684589675845645\",\r\n                \"userId\": \"GIPUSER\",\r\n                \"accountToDebit\": \"RDFH\",\r\n                \"prdCode\": \"MS38\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"03020820171412\",\r\n                \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n                \"transactionDetail\": \"GIP PAYMENT FOR GOODS\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/ftc_bulk_partnerAPI"
+					},
+					"response": []
+				},
+				{
+					"name": "FTC_Bulk_Internal",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"operation\": \" fundstransfer_bulk\",\r\n    \"file\": {\r\n        \"data\": [\r\n            {\r\n                \"amount\": \"50\",\r\n                \"destBankCode\": \"300115\",\r\n                \"channelRef\": \"125558458988\",\r\n                \"userId\": \"GIPUSER\",\r\n                \"accountToDebit\": \"1055321777616\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"1020820171412\",\r\n                \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n                \"transactionDetail\": \"GIP PAYMENT FOR GOODS\"\r\n            },\r\n            {\r\n                \"amount\": \"50\",\r\n                \"destBankCode\": \"300315\",\r\n                \"channelRef\": \"16853277825\",\r\n                \"userId\": \"GIPUSER\",\r\n                \"accountToDebit\": \"1055321777616\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"1020820171412\",\r\n                \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n                \"transactionDetail\": \"GIP PAYMENT FOR GOODS\"\r\n            },\r\n            {\r\n                \"amount\": \"50\",\r\n                \"destBankCode\": \"300315\",\r\n                \"channelRef\": \"54576795791782827\",\r\n                \"userId\": \"GIPUSER\",\r\n                \"accountToDebit\": \"1055321777616\",\r\n                \"nameToDebit\": \"JOE ANOKYE\",\r\n                \"accountToCredit\": \"1020820171412\",\r\n                \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n                \"transactionDetail\": \"GIP PAYMENT FOR GOODS\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/ftc_bulk_internalAPI"
+					},
+					"response": []
+				},
+				{
+					"name": "https://10.180.142.218:7850/ftc_statuscheck",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"operation\": \"gip_statuscheck\",\r\n  \"channelRef\": \"12547546555\",\r\n  \"amount\": \"10\",\r\n  \"dateTime\": \"220719172647\",\r\n  \"trackingNum\": \"395725\",\r\n  \"destBank\": \"300592\",\r\n  \"sessionId\": \"789654123321\",\r\n  \"channelCode\": \"100\",\r\n  \"nameToDebit\": \"JOE ANOKYE\",\r\n  \"accountToDebit\": \"1055321777616\",\r\n  \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n  \"accountToCredit\": \"0267327390\",\r\n  \"narration\": \"GIP PAYMENT FOR GOODS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/ftc_statuscheck"
+					},
+					"response": []
+				},
+				{
+					"name": "FTC_StatusCheck",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"operation\": \"gip_statuscheck\",\r\n  \"channelRef\": \"12547546554\",\r\n  \"amount\": \"10\",\r\n  \"dateTime\": \"220719172647\",\r\n  \"trackingNum\": \"395725\",\r\n  \"destBank\": \"300592\",\r\n  \"sessionId\": \"789654123321\",\r\n  \"channelCode\": \"100\",\r\n  \"nameToDebit\": \"JOE ANOKYE\",\r\n  \"accountToDebit\": \"1055321777616\",\r\n  \"nameToCredit\": \"OLAM PURCHASE ACCOUNT\",\r\n  \"accountToCredit\": \"0267327390\",\r\n  \"narration\": \"GIP PAYMENT FOR GOODS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://10.180.142.218:7850/ftc_statuscheck"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
