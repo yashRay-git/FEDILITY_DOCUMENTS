@@ -1,0 +1,76 @@
+creation of vault
+mqsivault broker1 --create --vault-key VaultName
+
+give credential name
+mqsicredentials broker1 --integration-server server1 --create --credential-type local --credential-name LocalCredentialAlias --vault-key VaultName --username Eidiko --password sarasu10
+
+to start the broker
+mqsistart broker4 --vault-key firstvault
+
+
+mqsicredentials broker4 --integration-server serv --create --credential-type local --credential-name LocalCredentialsAlias --vault-key firstvault  --username Eidiko --password sarasu10
+
+
+to remove Vault
+mqsivault broker4 --vaultrc-remove-key firstvault --vaultrc-location 'C:\ProgramData\IBM\MQSI\components\broker4'
+mqsivaultrc_file_location
+
+
+mqsivault vault --create --vault-key vault1234
+
+
+mqsicredentials vault --integration-server serv --create --credential-type local --credential-name LocalCredentialsAlias --vault-key vault1234 --username ad --password adesh
+
+mqsistart vault --vault-key vault1234
+
+
+
+
+mqsivault vaultbroker --create --vault-key vault4225
+
+mqsicredentials vaultbroker --integration-server vaultserver --create --credential-type local --credential-name LocalCredentialsAlias --vault-key vault4225 --username sarasu10 --password sarasu10
+
+mqsistart vaultbroker --vault-key vault4225
+
+
+mqsivault wsvault --create --vault-key vault1183
+
+mqsicredentials wsvault --integration-server wsserver --create --credential-type local --credential-name mycredentials --vault-key vault1183 --username sarasu10 --password sarasu10
+
+mqsistart wsvault --vault-key vault1183
+
+mqsireportproperties wsvault -b httplistener -o HTTPConnector -r
+
+mqsireportproperties wsvault -e wsserver -o HTTPConnector -r
+
+
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsicredentials vault --integration-server serv --create --credential-type local --credential-name phani225 --vault-key vault1234 --username ad --password adesh
+BIP15293I: Node or workdir vault key obtained from --vault-key command line argument.
+BIP15119I: The 'create' action was successful for credential name 'phani225' of type 'local'.
+
+BIP8071I: Successful command completion.
+
+mqsivault vault --create --vault-key vault1234
+
+
+mqsicredentials vault --integration-server serv --create --credential-type local --credential-name alias1 --vault-key vault1234 --username ad --password adesh
+
+mqsistart vault --vault-key vault1234
+
+mqsideploy wsvault -e wsserver -a "C:\Users\Sreenivas Bandaru\IBM\ACET12\workspace\BARfiles\wssecurity.bar"
+
+
+mqsivault vault1 --create --vault-key vault4225
+
+mqsicredentials vault1 --integration-server serv1 --create --credential-type local --credential-name phani --vault-key vault4225 --username bandaru --password sarasu10
+
+mqsistart vault1 --vault-key vault4225
+
+
+
+mqsivault mqvault --create --vault-key mqvault1
+
+mqsicredentials mqvault --integration-server serv --create --credential-type local --credential-name phani --vault-key mqvault1 --username phani --password sarasu10
+
+mqsistart mqvault --vault-key mqvault1

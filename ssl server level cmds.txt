@@ -1,0 +1,123 @@
+C:\Program Files\IBM\ACE\12.0.12.0>ikeyman
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsireportproperties sslserv -e serv -o JVM -r
+
+JVM
+  name='JVM'
+  identifier='ComIbmJVMManager'
+  type='resourceManager'
+  allowSNI=''
+  allowSSLv3=''
+  crlFileList=''
+  enableCRLDP=''
+  jvmDebugPort='444'
+  jvmDisableClassGC='false'
+  jvmEnableIncGC='false'
+  jvmJavaOSStackSize='-1'
+  jvmMaxHeapSize='268435456'
+  jvmMinHeapSize='33554432'
+  jvmNativeStackSize='-1'
+  jvmShareClasses='false'
+  jvmSystemProperty=''
+  jvmVerboseOption='none'
+  kerberosConfigFile=''
+  kerberosKeytabFile=''
+  keystoreFile=''
+  keystorePass='********'
+  keystoreType=''
+  networkaddressCacheTtl='60'
+  truststoreFile=''
+  truststorePass='********'
+  truststoreType=''
+  active
+    allowSNI=''
+    allowSSLv3=''
+    crlFileList=''
+    enableCRLDP=''
+    jvmDebugPort='444'
+    jvmDisableClassGC='false'
+    jvmEnableIncGC='false'
+    jvmJavaOSStackSize='-1'
+    jvmMaxHeapSize='268435456'
+    jvmMinHeapSize='33554432'
+    jvmNativeStackSize='-1'
+    jvmShareClasses='false'
+    jvmSystemProperty=''
+    jvmVerboseOption='0'
+    kerberosConfigFile=''
+    kerberosKeytabFile=''
+    keystoreFile=''
+    keystorePass='********'
+    keystoreType=''
+    networkaddressCacheTtl='60'
+    resourceStatsReportingOn='true'
+    serverRestartRequired='false'
+    truststoreFile=''
+    truststorePass='********'
+    truststoreType=''
+    statistics
+      Garbage Collection - global
+        CumulativeGCTimeInSeconds='0'
+        CumulativeNumberOfGCCollections='0'
+      Garbage Collection - scavenge
+        CumulativeGCTimeInSeconds='0'
+        CumulativeNumberOfGCCollections='19'
+      Heap Memory
+        CommittedMemoryInMB='32'
+        InitialMemoryInMB='32'
+        MaxMemoryInMB='256'
+        UsedMemoryInMB='12'
+      Non-Heap Memory
+        CommittedMemoryInMB='280'
+        InitialMemoryInMB='273'
+        MaxMemoryInMB='-1'
+        UsedMemoryInMB='22'
+      summary
+        CommittedMemoryInMB='312'
+        CumulativeGCTimeInSeconds='0'
+        CumulativeNumberOfGCCollections='19'
+        InitialMemoryInMB='305'
+        MaxMemoryInMB='-1'
+        UsedMemoryInMB='34'
+
+BIP8071I: Successful command completion.
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsichangeproperties sslserv -e serv -o JVM -n keystoreFile -v "C:\sslserverlev\keystore.jks"
+BIP8491W: The changes have been accepted and persisted by the integration server 'serv'. An integration server restart is required for the changes to become active.
+
+BIP8071I: Successful command completion.
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsichangeproperties sslserv -e serv -o JVM -n truststoreFile -v "C:\sslserverlev\truststore.jks"
+BIP8491W: The changes have been accepted and persisted by the integration server 'serv'. An integration server restart is required for the changes to become active.
+
+BIP8071I: Successful command completion.
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsichangeproperties sslserv -e serv -o JVM -n keystoreType -v JKS
+BIP8491W: The changes have been accepted and persisted by the integration server 'serv'. An integration server restart is required for the changes to become active.
+
+BIP8071I: Successful command completion.
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsichangeproperties sslserv -e serv -o JVM -n truststoreType -v JKS
+BIP8491W: The changes have been accepted and persisted by the integration server 'serv'. An integration server restart is required for the changes to become active.
+
+BIP8071I: Successful command completion.
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsichangeproperties sslserv -e serv -o JVM -n keystorePass -v serv::keystorePass
+BIP8491W: The changes have been accepted and persisted by the integration server 'serv'. An integration server restart is required for the changes to become active.
+
+BIP8071I: Successful command completion.
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsichangeproperties sslserv -e serv -o JVM -n truststorePass -v serv::truststorePass
+BIP8491W: The changes have been accepted and persisted by the integration server 'serv'. An integration server restart is required for the changes to become active.
+
+BIP8071I: Successful command completion.
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsisetdbparms sslserv -n serv::keystorePass -u ignore -p sarasu10
+BIP8071I: Successful command completion.
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsisetdbparms sslserv -n serv::truststorePass -u ignore -p sarasu10
+BIP8071I: Successful command completion.
+
+C:\Program Files\IBM\ACE\12.0.12.0>mqsistop sslserv && mqsistart sslserv
+BIP8071I: Successful command completion.
+BIP8096I: Successful command initiation, check the system log to ensure that the component started without problem and that it continues to run without problem.
