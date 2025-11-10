@@ -1,0 +1,75 @@
+Fidelity Bank ::
+================
+Login Credentials :
+==================
+Username : s.votarikari
+Password : Shravan@1234
+
+Migration Project Document sheet : 
+==================================
+https://docs.google.com/spreadsheets/d/1KE5H841_VfnvKzYwAE5pwyadAO7-XTZw/edit?gid=1426338862#gid=1426338862
+
+Development Project Document sheet :
+====================================
+https://docs.google.com/spreadsheets/d/1XNTPq-hiX8CHyztqlB0sb8o32K427TLjoSEJxC5k8Zk/edit?gid=1450284075#gid=1450284075
+
+SecretServer URL :
+===================
+https://fbluatsecsvr.myfidelitybank.net/SecretServer (Old)
+https://fbluatsecapsvr2.myfidelitybank.net/SecretServer/login.aspx (New)
+
+SIT_Logs Location : 
+===================
+/ace11/interfaces/log4j/log/AuditLog.log
+
+SIT_Log Config File location : 
+==============================
+/ace11/log4j/Log4jConfig.xml
+
+UAT_Logs Location : 
+====================
+/ace11/interfaces/log4j/log/AuditLog.log
+
+UAT_Logs Config File location : 
+===============================
+/ace11/log4j/Log4jConfig.xml
+
+UAT :
+=======
+keystoreFile='/var/mqsi/keystores/EGGHIPPS01/fidelity_iib11uat.jks'
+truststoreFile='/var/mqsi/keystores/EGGHIPPS01/cacerts'
+
+WorkPath location :
+====================
+/ace11/WORKPATH/ACE/components/ACESITBRK01/servers
+
+RDP	: 10.180.142.29
+SIT	: 10.180.142.218
+UAT	: 10.180.143.22
+
+
+DSN Names : 
+===========
+for RTP Logging : RTPDB 
+for Dblogging 	: DBLOGGING
+
+RTP Database:
+=============
+Server IP address: 10.180.143.160
+Port: 1521
+SID: gipsrtp
+Application username: GHIPPSRTP
+Password: Ghi99$Us3$UatPass
+
+Audit Log DB:
+=============
+Hostname: 10.180.100.42
+ServiceName: fcclive
+Port: 1521
+Userid: esblog
+Password: esblog
+
+DBLOGGING Queries:
+==================
+SELECT * FROM ERROR_AUDIT_LOGGING ORDER BY LOGGING_TIME DESC;
+SELECT * FROM RAW_AUDIT_LOGGING ORDER BY LOGGING_TIME DESC;
